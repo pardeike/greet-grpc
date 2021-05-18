@@ -4,12 +4,18 @@
         "module": "commonjs",
         "allowJs": true,
         "sourceMap": true,
+        "rootDir": "src",
         "outDir": "./dist",
         "strict": true,
         "noImplicitAny": false,
         "strictNullChecks": false,
         "baseUrl": "./",
         "typeRoots": ["node_modules/@types"],
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "plugins": [
+            {
+                "transform": "./transformers/transformer.ts"
+            }
+        ]
     }
 }
