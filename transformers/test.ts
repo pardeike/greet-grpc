@@ -10,9 +10,21 @@ export function printRecursiveFrom(node: ts.Node, indentLevel: number, sourceFil
 	node.forEachChild((child) => printRecursiveFrom(child, indentLevel + 1, sourceFile))
 }
 
-const source = readFileSync('src/server/greeting.ts').toString()
+function logNodesTranformer(context: ts.TransformationContext): ts.Transformer<ts.SourceFile> {
+	const f = context.factory
+	function transform(sourceFile: ts.SourceFile): ts.SourceFile {
+		const visit = (node: ts.Node): ts.VisitResult<ts.Node> => {
+			console.log(`METHOD: ${ts.SyntaxKind[node.kind]} ${node.getText(sourceFile)}`)
+			return ts.visitEachChild(node, (child) => visit(child), context)
+		}
+		return ts.visitNode(sourceFile, visit)
+	}
+	return transform
+}
+
+const source = readFileSync('src/client/greet.ts').toString()
 const result = ts.transpileModule(source, {
 	compilerOptions: { module: ts.ModuleKind.CommonJS },
 	transformers: { before: [conductor.transformer] },
 })
-console.log(result.outputText)
+//console.log(result.outputText)
