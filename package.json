@@ -1,34 +1,37 @@
 {
-    "name": "grpc-ts-demo",
-    "version": "1.0.0",
-    "author": "Mike Christensen",
-    "license": "MIT",
-    "dependencies": {
-        "@grpc/grpc-js": "^1.2.2",
-        "@types/inquirer": "^6.5.0",
-        "@types/lowdb": "^1.0.9",
-        "@types/yargs": "^15.0.3",
-        "cli-table": "^0.3.1",
-        "inquirer": "^7.0.4",
-        "lodash": "^4.17.15",
-        "lowdb": "^1.0.0",
-        "yargs": "^15.1.0"
-    },
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^2.19.0",
-        "@typescript-eslint/parser": "^2.19.0",
-        "eslint": "^6.8.0",
-        "grpc_tools_node_protoc_ts": "^5.0.1",
-        "grpc-tools": "^1.11.1",
-        "request": "^2.88.2",
-        "ttypescript": "^1.5.12",
-        "typescript": "^4.1.2"
-    },
-    "scripts": {
-        "lint": "npx eslint --fix --ext .ts src",
-        "prebuild": "npm run lint",
-        "clean": "rm -rf ./src/proto && mkdir -p ./src/proto && rm -f chat-*.txt && rm -f db.json",
-        "build": "sh ./scripts/build-protos.sh ./songs.proto ./src/proto && npx ttsc",
-        "start": "PORT=6789 node ./dist/index.js"
-    }
+	"name": "grpc-ts-demo",
+	"version": "1.0.0",
+	"author": "Mike Christensen",
+	"license": "MIT",
+	"dependencies": {
+		"@grpc/grpc-js": "^1.2.2",
+		"@types/inquirer": "^6.5.0",
+		"@types/lowdb": "^1.0.9",
+		"@types/yargs": "^15.0.3",
+		"cli-table": "^0.3.1",
+		"inquirer": "^7.0.4",
+		"lodash": "^4.17.15",
+		"lowdb": "^1.0.0",
+		"uuid": "^3.4.0",
+		"yargs": "^15.1.0"
+	},
+	"devDependencies": {
+		"@types/uuid": "^8.3.0",
+		"@typescript-eslint/eslint-plugin": "^2.19.0",
+		"@typescript-eslint/parser": "^2.19.0",
+		"eslint": "^6.8.0",
+		"grpc_tools_node_protoc_ts": "^5.0.1",
+		"grpc-tools": "^1.11.1",
+		"request": "^2.88.2",
+		"service-conductor": "1.0.0-alpha9",
+		"ttypescript": "^1.5.12",
+		"typescript": "^4.1.2"
+	},
+	"scripts": {
+		"lint": "npx eslint --fix --ext .ts src",
+		"prebuild": "npm run lint",
+		"clean": "rm -f package-lock.json && rm -rf node_modules && rm -rf ./src/proto && rm -rf ./dist && mkdir -p ./src/proto && rm -f chat-*.txt && rm -f db.json",
+		"build": "sh ./scripts/build-protos.sh ./songs.proto ./src/proto && npx ttsc",
+		"start": "PORT=6789 node ./dist/index.js"
+	}
 }
