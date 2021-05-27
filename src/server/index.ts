@@ -19,5 +19,5 @@ export default {
 	command: 'serve',
 	describe: 'Start the gRPC server',
 	builder: {},
-	handler: serve,
+	handler: serve
 }

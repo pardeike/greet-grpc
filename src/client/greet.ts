@@ -23,10 +23,10 @@ export default {
 	builder: {
 		user: {
 			demand: true,
-			string: true,
-		},
+			string: true
+		}
 	},
 	handler: async (argv): Promise<void> => {
 		await greet(argv.user)
-	},
+	}
 }
