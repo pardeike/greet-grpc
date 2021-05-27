@@ -2,6 +2,10 @@ import * as grpc from '@grpc/grpc-js'
 import { GreetingService } from '../proto/hello_grpc_pb'
 import { GreetingServer } from './greeting'
 
+function ready(port: number): void {
+	console.log(`Listening on ${port}`)
+}
+
 function serve(): void {
 	const server = new grpc.Server()
 	// @ts-ignore
@@ -10,8 +14,8 @@ function serve(): void {
 		if (err) {
 			throw err
 		}
-		console.log(`Listening on ${port}`)
 		server.start()
+		ready(port)
 	})
 }
 

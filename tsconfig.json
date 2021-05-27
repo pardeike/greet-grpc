@@ -10,17 +10,9 @@
 		"noImplicitAny": false,
 		"strictNullChecks": false,
 		"baseUrl": "./",
-		"typeRoots": [
-			"node_modules/@types"
-		],
+		"typeRoots": ["node_modules/@types"],
 		"esModuleInterop": true,
-		"plugins": [
-			{
-				"transform": "./transformers/transformer.ts"
-			}
-		]
+		"plugins": [{ "transform": "./transformers/transformer.ts" }]
 	},
-	"include": [
-		"src/**/*"
-	]
+	"include": ["src/**/*"]
 }

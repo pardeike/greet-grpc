@@ -1,6 +1,10 @@
 import client from './client'
 import { GreetRequest } from '../proto/hello_pb'
 
+function greetResponse(txt: string): void {
+	console.log(`Response: ${txt}`)
+}
+
 function greet(user: string): Promise<void> {
 	console.log(`Request: ${user}`)
 	const request = new GreetRequest()
@@ -12,7 +16,7 @@ function greet(user: string): Promise<void> {
 				reject
 				return
 			}
-			console.log(`Response: ${response.getText()}`)
+			greetResponse(response.getText())
 		})
 	})
 }
